@@ -6,6 +6,9 @@ require("dotenv").config();
 // set server PORT -- using 3001 to not collide with react app use of 3000
 const PORT = process.env.PORT || 3001;
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 mongoose.connect(
   process.env.MONGODB_CONNECTION_STRING || "mongodb://localhost/famRecipe",
   {
