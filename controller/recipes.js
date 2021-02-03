@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-require("../models/Recipe")
 
-const db = require("../models/Recipe");
+const db = require("../models");
 
 router.post("/api/recipe", (req, res) => {
+  console.log(req.body);
   db.Recipe.create(req.body)
     .then((newRecipe) => {
       console.log(newRecipe);
