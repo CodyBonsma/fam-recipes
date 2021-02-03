@@ -11,6 +11,9 @@ const RecipeSchema = new Schema({
   description: {
     type: String,
   },
+  cookTime: {
+    type: Number,
+  },
   isVegetarian: {
     type: Boolean,
     default: false,
