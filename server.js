@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const path = require('path')
 require("dotenv").config();
 
 // set server PORT -- using 3001 to not collide with react app use of 3000
@@ -12,6 +13,9 @@ app.use(recipeController);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(express.static("client/build"));
+app.use(express.static(path.join(__dirname, "public")));
 
 mongoose.connect(
   process.env.MONGODB_CONNECTION_STRING || "mongodb://localhost/famRecipe",

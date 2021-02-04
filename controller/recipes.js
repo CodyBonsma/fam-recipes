@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const db = require("../models");
+const db = require('../models/index');
 
 router.post("/api/recipe", (req, res) => {
   console.log(req.body);
