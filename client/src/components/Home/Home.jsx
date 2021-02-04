@@ -7,6 +7,7 @@ const Home = () => {
       <div className="row">
         <div className="col-sm-12 home-header">
           <h2>This will be the homepage</h2>
+          <button>Add Recipe</button>
         </div>
       </div>
     </div>
