@@ -2,6 +2,8 @@
     position: fixed;
     top: 50%;
     left: 50%;
+    height: 50vh;
+    width: 50vh;
     transform: translate(-50%, -50%);
     background-color: #FFF;
     padding: 50px;
@@ -17,3 +19,7 @@
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1000;
 }
+
+/* #recipe-description {
+    height: 70px;
+} */
