@@ -35,8 +35,7 @@ const Home = () => {
             <label for="inputPassword5" className="form-label">
               Description
             </label>
-            <input
-              type="description"
+            <textarea
               id="recipe-description"
               className="form-control"
             />
