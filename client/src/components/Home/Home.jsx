@@ -6,19 +6,26 @@ const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
   const [recipe, setRecipe] = useState({});
-  const nameRef = useRef();
-  const ingredientRef = useRef();
-  const descriptionRef = useRef();
+  const nameRef = React.useRef();
+  const ingredientRef = React.useRef();
+  const descriptionRef = React.useRef();
 
   // save recipe function
   const saveRecipe = () => {
     console.log("clicked save recipe");
-    console.log(recipeRef.current.value);
   };
 
   const handleInput = (e) => {
-    console.log(e.target.value);
-    setRecipe(e.target.value);
+    console.log(nameRef.current.value);
+    console.log(ingredientRef.current.value);
+    console.log(descriptionRef.current.value);
+
+    setRecipe({
+      name: nameRef.current.value,
+      ingredients: ingredientRef.current.value,
+      description: descriptionRef.current.value,
+      vegetarian: {isVegetarian},
+    });
   };
 
   console.log("RECIPE: ", recipe);
