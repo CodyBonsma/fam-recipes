@@ -4,6 +4,16 @@ import "./Home.css";
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVegetarian, setIsVegetarian] = useState(false);
+
+  // checkbox for the vegetarian options
+  const checkVeg = (e) => {
+    console.log("clicked veg");
+    setIsVegetarian((prev) => !prev);
+  }
+
+  console.log("is VEGGIE? ",isVegetarian);
+
   return (
     <div className="container">
       <div className="row">
@@ -35,13 +45,25 @@ const Home = () => {
             <label for="inputPassword5" className="form-label">
               Description
             </label>
-            <textarea
-              id="recipe-description"
-              className="form-control"
-            />
+            <textarea id="recipe-description" className="form-control" />
             <div id="recipe-helpBlock" className="form-text">
               Describe the process to get this delicious dish ready and served
             </div>
+            <br/>
+            <div class="form-check">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+                checked={isVegetarian}
+                onChange={checkVeg}
+              />
+              <label className="form-check-label" for="flexCheckDefault">
+                Vegetarian
+              </label>
+            </div>
+            <br/>
             <button onClick={() => setIsOpen(false)}>close</button>
           </Modal>
           <button onClick={() => setIsOpen(true)}>Add Recipe</button>

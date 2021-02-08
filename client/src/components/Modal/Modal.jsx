@@ -2,7 +2,7 @@ import React from "react";
 import "./Modal.css";
 import ReactDom from "react-dom";
 
-const Modal = ({ children, open }) => {
+const Modal = ({ children, open, isVegetarian }) => {
   if (!open) return null;
   return ReactDom.createPortal(
     <>
