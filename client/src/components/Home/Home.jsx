@@ -1,18 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Modal from "../Modal/Modal";
 import "./Home.css";
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
+  const [recipe, setRecipe] = useState({});
+  const nameRef = useRef();
+  const ingredientRef = useRef();
+  const descriptionRef = useRef();
+
+  // save recipe function
+  const saveRecipe = () => {
+    console.log("clicked save recipe");
+    console.log(recipeRef.current.value);
+  };
+
+  const handleInput = (e) => {
+    console.log(e.target.value);
+    setRecipe(e.target.value);
+  };
+
+  console.log("RECIPE: ", recipe);
 
   // checkbox for the vegetarian options
   const checkVeg = (e) => {
     console.log("clicked veg");
     setIsVegetarian((prev) => !prev);
-  }
+  };
 
-  console.log("is VEGGIE? ",isVegetarian);
+  console.log("is VEGGIE? ", isVegetarian);
 
   return (
     <div className="container">
@@ -20,11 +37,12 @@ const Home = () => {
         <div className="col-sm-12 home-header">
           <h2>This will be the homepage</h2>
           <Modal open={isOpen}>
-            <div class="mb-3">
+            <div className="mb-3">
               <label for="formGroupExampleInput" className="form-label">
                 Recipe Name
               </label>
               <input
+                ref={nameRef}
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput"
@@ -36,6 +54,7 @@ const Home = () => {
                 Ingredients (comma separated)
               </label>
               <input
+                ref={ingredientRef}
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput2"
@@ -45,12 +64,16 @@ const Home = () => {
             <label for="inputPassword5" className="form-label">
               Description
             </label>
-            <textarea id="recipe-description" className="form-control" />
+            <textarea
+              ref={descriptionRef}
+              id="recipe-description"
+              className="form-control"
+            />
             <div id="recipe-helpBlock" className="form-text">
               Describe the process to get this delicious dish ready and served
             </div>
-            <br/>
-            <div class="form-check">
+            <br />
+            <div className="form-check">
               <input
                 className="form-check-input"
                 type="checkbox"
@@ -63,8 +86,9 @@ const Home = () => {
                 Vegetarian
               </label>
             </div>
-            <br/>
+            <br />
             <button onClick={() => setIsOpen(false)}>close</button>
+            <button onClick={(e) => handleInput(e)}>save</button>
           </Modal>
           <button onClick={() => setIsOpen(true)}>Add Recipe</button>
         </div>
