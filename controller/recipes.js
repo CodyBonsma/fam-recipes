@@ -8,7 +8,7 @@ const db = require('../models/index');
 
 // create post route to add recipes 
 router.post("/api/recipe", jsonParser, (req, res) => {
-  console.log(req.body);
+  console.log("REQ.BODY: ", req.body);
   db.Recipe.create(req.body)
     .then((newRecipe) => {
       res.json(newRecipe);

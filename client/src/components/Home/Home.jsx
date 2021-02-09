@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import Modal from "../Modal/Modal";
+import Data from "../../utils/connect";
 import "./Home.css";
 
 const Home = () => {
@@ -19,8 +20,16 @@ const Home = () => {
       name: nameRef.current.value,
       ingredients: ingredientRef.current.value,
       description: descriptionRef.current.value,
-      vegetarian: {isVegetarian},
+      vegetarian: { isVegetarian },
     });
+
+    Data.saveRecipe(recipe)
+      .then((savedRecipe) => {
+        console.log("this is the saved recipe: ", savedRecipe.data);
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
   };
 
   console.log("RECIPE: ", recipe);
