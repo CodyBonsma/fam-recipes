@@ -6,29 +6,36 @@ import "./Home.css";
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
-  const [recipe, setRecipe] = useState({});
+  const [recipe, setRecipe] = useState();
   const nameRef = React.useRef();
   const ingredientRef = React.useRef();
   const descriptionRef = React.useRef();
 
-  const handleInput = async (e) => {
-    await setRecipe({
+  const handleInput = (e) => {
+    e.preventDefault();
+    setRecipe({
       name: nameRef.current.value,
       ingredients: ingredientRef.current.value,
       description: descriptionRef.current.value,
       vegetarian: { isVegetarian },
     });
 
-    Data.saveRecipe(recipe)
-      .then((savedRecipe) => {
-        console.log("this is the saved recipe: ", savedRecipe.data);
-      })
-      .catch((err) => {
-        if (err) throw err;
-      });
+    sendEntry();
   };
 
-  console.log("RECIPE: ", recipe);
+  const sendEntry = () => {
+    setTimeout(() => {
+      Data.saveRecipe(recipe)
+        .then((savedRecipe) => {
+          console.log("this is the saved recipe: ", savedRecipe.data);
+        })
+        .catch((err) => {
+          if (err) throw err;
+        });
+
+      setRecipe("");
+    }, 2000);
+  };
 
   // checkbox for the vegetarian options
   const checkVeg = (e) => {
