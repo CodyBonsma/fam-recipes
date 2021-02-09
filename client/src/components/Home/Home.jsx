@@ -11,12 +11,8 @@ const Home = () => {
   const ingredientRef = React.useRef();
   const descriptionRef = React.useRef();
 
-  const handleInput = (e) => {
-    console.log(nameRef.current.value);
-    console.log(ingredientRef.current.value);
-    console.log(descriptionRef.current.value);
-
-    setRecipe({
+  const handleInput = async (e) => {
+    await setRecipe({
       name: nameRef.current.value,
       ingredients: ingredientRef.current.value,
       description: descriptionRef.current.value,
