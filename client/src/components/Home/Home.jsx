@@ -10,11 +10,6 @@ const Home = () => {
   const ingredientRef = React.useRef();
   const descriptionRef = React.useRef();
 
-  // save recipe function
-  const saveRecipe = () => {
-    console.log("clicked save recipe");
-  };
-
   const handleInput = (e) => {
     console.log(nameRef.current.value);
     console.log(ingredientRef.current.value);
@@ -35,8 +30,6 @@ const Home = () => {
     console.log("clicked veg");
     setIsVegetarian((prev) => !prev);
   };
-
-  console.log("is VEGGIE? ", isVegetarian);
 
   return (
     <div className="container">
