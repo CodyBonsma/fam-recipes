@@ -27,7 +27,8 @@ router.get("/api/recipe", jsonParser, (req, res) => {
   console.log(req.body);
   db.Recipe.find({})
     .then((foundRecipes) => {
-      console.log("recipes found: ", foundRecipes);
+    //   console.log("recipes found: ", foundRecipes);
+      res.json(foundRecipes);
     })
     .catch((err) => {
       res.json({
