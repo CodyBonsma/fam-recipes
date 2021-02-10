@@ -12,6 +12,6 @@ export default {
   deleteRecipe: (recipeID) => {
     console.log(recipeID);
     let { id } = recipeID;
-    return axios.delete("/api/recipe/:id"+ id);
+    return axios.delete("/api/recipe:id"+ id);
   },
 };

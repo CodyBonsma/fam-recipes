@@ -23,7 +23,7 @@ const Recipes = () => {
   const deleteRecipe = (e) => {
     console.log("clicked to delete recipe", e);
     let recipeID = e;
-    Data.deleteRecipe({ id: recipeID })
+    Data.deleteRecipe({ recipeID })
       .then((deletedRecipe) => {
         console.log(deletedRecipe);
       })
