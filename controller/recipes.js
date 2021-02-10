@@ -27,7 +27,7 @@ router.get("/api/recipe", jsonParser, (req, res) => {
   console.log(req.body);
   db.Recipe.find({})
     .then((foundRecipes) => {
-    //   console.log("recipes found: ", foundRecipes);
+      //   console.log("recipes found: ", foundRecipes);
       res.json(foundRecipes);
     })
     .catch((err) => {
@@ -39,4 +39,19 @@ router.get("/api/recipe", jsonParser, (req, res) => {
     });
 });
 
+// delete recipe by ID
+router.delete("/api/recipe:id", jsonParser, (req, res) => {
+  console.log("INCOMING ID: ", req.params);
+  db.Recipe.findByIdAndDelete({})
+    .then((deletedRecipe) => {
+      console.log(deletedRecipe);
+    })
+    .catch((err) => {
+      res.json({
+        error: true,
+        data: null,
+        message: "unable to delete selected recipe",
+      });
+    });
+});
 module.exports = router;

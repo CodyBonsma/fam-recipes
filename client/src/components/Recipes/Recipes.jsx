@@ -9,17 +9,28 @@ const Recipes = () => {
     Data.savedRecipes({})
       .then((foundRecipes) => {
         console.log("WHAT I FOUND", foundRecipes.data);
-        if(foundRecipes){
-            setSavedRecipes(foundRecipes.data);
-
+        if (foundRecipes) {
+          setSavedRecipes(foundRecipes.data);
         } else {
-            setSavedRecipes('')
+          setSavedRecipes("");
         }
       })
       .catch((err) => {
         if (err) throw err;
       });
   }, []);
+
+  const deleteRecipe = (e) => {
+    console.log("clicked to delete recipe", e);
+    let recipeID = e;
+    Data.deleteRecipe({ id: recipeID })
+      .then((deletedRecipe) => {
+        console.log(deletedRecipe);
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
+  };
 
   return (
     <>
@@ -37,7 +48,9 @@ const Recipes = () => {
                   <li>{recipe.ingredients}</li>
                   <p>{recipe.description}</p>
                   <br />
-                  <button>delete</button>
+                  <button onClick={(e) => deleteRecipe(recipe._id)}>
+                    delete
+                  </button>
                   <hr />
                 </div>
               );
