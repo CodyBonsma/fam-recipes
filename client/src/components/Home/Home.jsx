@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Modal from "../Modal/Modal";
 import Data from "../../utils/connect";
 import "./Home.css";
@@ -7,34 +7,39 @@ const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
   const [recipe, setRecipe] = useState();
+  const isFirstRender = React.useRef(true);
   const nameRef = React.useRef();
   const ingredientRef = React.useRef();
   const descriptionRef = React.useRef();
 
   const handleInput = (e) => {
-    e.preventDefault();
     setRecipe({
       name: nameRef.current.value,
       ingredients: ingredientRef.current.value,
       description: descriptionRef.current.value,
       vegetarian: { isVegetarian },
     });
-
-    sendEntry();
   };
 
-  const sendEntry = () => {
-    setTimeout(() => {
-      Data.saveRecipe(recipe)
-        .then((savedRecipe) => {
-          console.log("this is the saved recipe: ", savedRecipe.data);
-        })
-        .catch((err) => {
-          if (err) throw err;
-        });
+// useEffect to trigger sendEntry when state (recipe) has been updated
+// isFirstRender tracks the initial render when the page loads - ugly but works
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
 
-      setRecipe("");
-    }, 2000);
+    sendEntry();
+  }, [recipe]);
+
+  const sendEntry = () => {
+    Data.saveRecipe(recipe)
+      .then((savedRecipe) => {
+        console.log("this is the saved recipe: ", savedRecipe.data);
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
   };
 
   // checkbox for the vegetarian options
