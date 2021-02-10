@@ -1,6 +1,6 @@
 import "./App.css";
 import Home from "./components/Home/Home";
-import savedRecipes from "./components/Recipes/Recipes";
+import SavedRecipes from "./components/Recipes/Recipes";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path={["/savedrecipes"]}>
-            <savedRecipes />
+            <SavedRecipes />
           </Route>
         </Switch>
       </div>
