@@ -21,8 +21,8 @@ const Home = () => {
     });
   };
 
-// useEffect to trigger sendEntry when state (recipe) has been updated
-// isFirstRender tracks the initial render when the page loads - ugly but works
+  // useEffect to trigger sendEntry when state (recipe) has been updated
+  // isFirstRender tracks the initial render when the page loads - ugly but works
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -36,6 +36,9 @@ const Home = () => {
     Data.saveRecipe(recipe)
       .then((savedRecipe) => {
         console.log("this is the saved recipe: ", savedRecipe.data);
+        setTimeout(() => {
+          setIsOpen(false);
+        }, 500);
       })
       .catch((err) => {
         if (err) throw err;
