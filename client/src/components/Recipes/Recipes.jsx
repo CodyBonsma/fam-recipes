@@ -21,11 +21,13 @@ const Recipes = () => {
   }, []);
 
   const deleteRecipe = (e) => {
+    //   let deleteRec = JSON.parse(e)
     console.log("clicked to delete recipe", e);
     let recipeID = e;
     Data.deleteRecipe({ recipeID })
       .then((deletedRecipe) => {
-        console.log(deletedRecipe);
+        console.log("DELETING THIS", deletedRecipe);
+        
       })
       .catch((err) => {
         if (err) throw err;

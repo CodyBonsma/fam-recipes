@@ -10,8 +10,7 @@ export default {
   },
 
   deleteRecipe: (recipeID) => {
-    console.log(recipeID);
-    let { id } = recipeID;
-    return axios.delete("/api/recipe:id"+ id);
+    console.log("COMING INTO CONNECT", recipeID);
+    return axios.delete("/api/recipe", {recipeID});
   },
 };
