@@ -26,7 +26,23 @@ const Recipes = () => {
     let ID = e;
     Data.deleteRecipe({ ID })
       .then((deletedRecipe) => {
-        console.log("DELETING THIS", deletedRecipe);
+        console.log("DELETED THIS", deletedRecipe);
+        reloadRecipes();
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
+  };
+
+  const reloadRecipes = () => {
+    Data.savedRecipes({})
+      .then((foundRecipes) => {
+        console.log("WHAT I FOUND", foundRecipes.data);
+        if (foundRecipes) {
+          setSavedRecipes(foundRecipes.data);
+        } else {
+          setSavedRecipes("");
+        }
       })
       .catch((err) => {
         if (err) throw err;
