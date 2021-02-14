@@ -40,14 +40,16 @@ router.get("/api/recipe", jsonParser, (req, res) => {
 });
 
 // delete recipe by ID
-router.delete("/api/recipe:id", jsonParser, (req, res) => {
-    console.log(JSON.stringify(req.params.id))
-    console.log(req.params.recipeID)
-  console.log("INCOMING ID: ", req.params.id);
-  db.Recipe.findByIdAndUpdate({_id: req.params.id})
+router.delete("/api/recipe/", jsonParser, (req, res) => {
+  console.log(JSON.stringify(req.params));
+  console.log("INCOMING ID: ", req.params);
+  console.log(req.body)
+  let {recipeID} = req.body;
+  console.log(recipeID)
+  db.Recipe.findByIdAndDelete({ _id: req.params.id })
     .then((deletedRecipe) => {
       console.log(deletedRecipe);
-      res.json(deletedRecipe)
+      res.json(deletedRecipe);
     })
     .catch((err) => {
       res.json({
