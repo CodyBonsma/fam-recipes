@@ -1,7 +1,7 @@
 .navBar {
     background: #111;
     height: 55px;
-    
+    width: 100%;
 }
 
 .nav-logo {
@@ -17,7 +17,6 @@
 }
 
 li {
-    justify-content: center;
     color: white;
     padding: 10px;
     display: inline-block;

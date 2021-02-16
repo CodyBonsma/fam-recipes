@@ -5,13 +5,13 @@ import "./Navbar.css";
 const Navbar = () => {
   return (
     <>
-      <div className="navBar">
+      <div className="navBar fixed-top">
         <button className="nav-logo">
           <FaCarrot />
         </button>
         <ul>
-            <li>Home</li>
-            <li>Recipes</li>
+            <li onClick={() => (window.location.href="/")}>Home</li>
+            <li onClick={() => (window.loacation.href="/savedrecipes")}>Recipes</li>
         </ul>
       </div>
     </>
