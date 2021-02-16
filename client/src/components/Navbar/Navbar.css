@@ -1,11 +1,26 @@
-.nav-button {
+.navBar {
+    background: #111;
+    height: 55px;
+    
+}
+
+.nav-logo {
     font-size: 30px;
-    margin-right: 30px;
+    /* margin-right: 30px; */
     margin-left: 30px;
-    color: black;
+    color: white;
     background: transparent;
     border: none;
     cursor: pointer;
     outline: none;
     float: left;
 }
+
+li {
+    justify-content: center;
+    color: white;
+    padding: 10px;
+    display: inline-block;
+    list-style-type: none;
+}
+

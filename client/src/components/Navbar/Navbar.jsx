@@ -1,17 +1,17 @@
 import React from "react";
 import { FaBeer, FaCarrot } from "react-icons/fa";
-import "./Navbar.css"
+import "./Navbar.css";
 
 const Navbar = () => {
   return (
     <>
       <div className="navBar">
-        <button className="nav-button">
+        <button className="nav-logo">
           <FaCarrot />
         </button>
         <ul>
-          <li href="/">Home</li>
-          <li href="/savedrecipes">Recipes</li>
+            <li>Home</li>
+            <li>Recipes</li>
         </ul>
       </div>
     </>
