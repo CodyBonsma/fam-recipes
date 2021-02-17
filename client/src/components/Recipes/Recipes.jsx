@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Data from "../../utils/connect";
+import "./Recipes.css"
 
 const Recipes = () => {
   const [savedRecipes, setSavedRecipes] = useState();
@@ -51,7 +52,7 @@ const Recipes = () => {
 
   return (
     <>
-      <div>
+      <div className="saved-recipes-container">
         <h2>This will hold the saved recipes</h2>
         <ul>
           {savedRecipes ? (
