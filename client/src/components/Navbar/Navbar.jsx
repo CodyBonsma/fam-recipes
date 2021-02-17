@@ -7,15 +7,23 @@ const Navbar = () => {
     <>
       <div className="navBar fixed-top row">
         <div className="col-sm-4">
-          <button className="nav-logo">
+          <section
+            onClick={() => (window.location.href = "/")}
+            className="nav-logo"
+          >
             <FaCarrot />
-          </button>
+          </section>
         </div>
 
         <div className="nav-links col-sm-4">
           <ul>
-            <li onClick={() => (window.location.href = "/")}>Home</li>
-            <li onClick={() => (window.location.href = "/savedrecipes")}>
+            <li id="nav-items" onClick={() => (window.location.href = "/")}>
+              Home
+            </li>
+            <li
+              id="nav-items"
+              onClick={() => (window.location.href = "/savedrecipes")}
+            >
               Recipes
             </li>
           </ul>
