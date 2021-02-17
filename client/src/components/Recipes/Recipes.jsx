@@ -9,10 +9,10 @@ const Recipes = () => {
   useEffect(() => {
     Data.savedRecipes({})
       .then((foundRecipes) => {
-        console.log("WHAT I FOUND", foundRecipes.data);
-        if (!foundRecipes.data) {
+        console.log("WHAT I FOUND", foundRecipes);
+        if (!foundRecipes.data.length) {
           setSavedRecipes();
-        } else {
+        } else if (foundRecipes){
           setSavedRecipes(foundRecipes.data);
         }
       })
@@ -39,7 +39,7 @@ const Recipes = () => {
     Data.savedRecipes({})
       .then((foundRecipes) => {
         console.log("WHAT I FOUND", foundRecipes.data);
-        if (!foundRecipes) {
+        if (!foundRecipes.data.length) {
           setSavedRecipes();
         } else {
           setSavedRecipes(foundRecipes.data);
