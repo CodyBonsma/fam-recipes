@@ -10,10 +10,10 @@ const Recipes = () => {
     Data.savedRecipes({})
       .then((foundRecipes) => {
         console.log("WHAT I FOUND", foundRecipes.data);
-        if (foundRecipes) {
-          setSavedRecipes(foundRecipes.data);
+        if (!foundRecipes.data) {
+          setSavedRecipes();
         } else {
-          setSavedRecipes("");
+          setSavedRecipes(foundRecipes.data);
         }
       })
       .catch((err) => {
@@ -39,16 +39,17 @@ const Recipes = () => {
     Data.savedRecipes({})
       .then((foundRecipes) => {
         console.log("WHAT I FOUND", foundRecipes.data);
-        if (foundRecipes) {
-          setSavedRecipes(foundRecipes.data);
+        if (!foundRecipes) {
+          setSavedRecipes();
         } else {
-          setSavedRecipes("");
+          setSavedRecipes(foundRecipes.data);
         }
       })
       .catch((err) => {
         if (err) throw err;
       });
   };
+console.log("THIS IS WHAT's SAVED" , savedRecipes)
 
   return (
     <>
@@ -74,7 +75,7 @@ const Recipes = () => {
               );
             })
           ) : (
-            <div>
+            <div className="empty-recipes container">
               <p>No saved recipes to show</p>
             </div>
           )}
