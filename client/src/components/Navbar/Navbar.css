@@ -23,3 +23,8 @@ li {
     list-style-type: none;
 }
 
+.nav-links {
+display: flex;
+justify-content: center;
+}
+
