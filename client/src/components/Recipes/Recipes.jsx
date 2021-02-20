@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Data from "../../utils/connect";
-import "./Recipes.css"
+import "./Recipes.css";
 
 const Recipes = () => {
   const [savedRecipes, setSavedRecipes] = useState();
+  console.log(savedRecipes);
 
   // grab saved recipes when page loads
   useEffect(() => {
     Data.savedRecipes({})
       .then((foundRecipes) => {
-        console.log("WHAT I FOUND", foundRecipes);
         if (!foundRecipes.data.length) {
           setSavedRecipes();
-        } else if (foundRecipes){
+        } else if (foundRecipes) {
           setSavedRecipes(foundRecipes.data);
         }
       })
@@ -49,7 +49,6 @@ const Recipes = () => {
         if (err) throw err;
       });
   };
-console.log("THIS IS WHAT's SAVED" , savedRecipes)
 
   return (
     <>
@@ -59,7 +58,7 @@ console.log("THIS IS WHAT's SAVED" , savedRecipes)
           {savedRecipes ? (
             savedRecipes.map((recipe) => {
               return (
-                <div>
+                <div key={recipe._id}>
                   <li>
                     <b>{recipe.name}</b>
                   </li>
