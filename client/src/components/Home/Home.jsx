@@ -31,7 +31,13 @@ const Home = () => {
     });
   };
 
-  useEffect(() => {}, []);
+  // generate random number and then index the image array with it
+  // then set state with random image for the header
+  useEffect(() => {
+    let random = Math.floor(Math.random() * 3);
+    let randomImage = imageArr[random];
+    setNowImage(randomImage);
+  }, []);
 
   // useEffect to trigger sendEntry when state (recipe) has been updated
   // isFirstRender tracks the initial render when the page loads - ugly but works
@@ -40,13 +46,6 @@ const Home = () => {
       isFirstRender.current = false;
       return;
     }
-
-    let random = Math.floor(Math.random() * 3);
-    console.log(random);
-    for (let i = 0; i < imageArr.length; i++) {
-      setNowImage(imageArr.length[random]);
-    }
-    console.log(nowImage);
 
     sendEntry();
   }, [recipe]);
@@ -78,7 +77,6 @@ const Home = () => {
           style={{ backgroundImage: `url(${nowImage})` }}
         >
           <h2>This will be the homepage</h2>
-          <img src={imageArr.length[0]} alt="test image" />
           <Modal open={isOpen}>
             <div className="mb-3">
               <label for="formGroupExampleInput" className="form-label">
