@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import Modal from "../Modal/Modal";
 import Data from "../../utils/connect";
+import { ImageOne, ImageTwo, ImageThree, ImageFour } from "../../images/index";
+import TESTimage from "../../images/Image2.jpg";
 import "./Home.css";
 
 const Home = () => {
@@ -12,6 +14,8 @@ const Home = () => {
   const ingredientRef = React.useRef();
   const descriptionRef = React.useRef();
 
+  let imageArr = [];
+
   const handleInput = (e) => {
     setRecipe({
       name: nameRef.current.value,
@@ -20,6 +24,11 @@ const Home = () => {
       vegetarian: { isVegetarian },
     });
   };
+
+  useEffect(() => {
+   
+    console.log("saved images: ", ImageOne.default);
+  }, []);
 
   // useEffect to trigger sendEntry when state (recipe) has been updated
   // isFirstRender tracks the initial render when the page loads - ugly but works
@@ -54,8 +63,12 @@ const Home = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-sm-12 home-header">
+        <div
+          className="col-sm-12 home-header"
+          style={{ backgroundImage: `url(${ImageOne.default})` }}
+        >
           <h2>This will be the homepage</h2>
+          <img src={imageArr.Image1} alt="test image" />
           <Modal open={isOpen}>
             <div className="mb-3">
               <label for="formGroupExampleInput" className="form-label">
