@@ -9,12 +9,18 @@ const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
   const [recipe, setRecipe] = useState();
+  const [nowImage, setNowImage] = useState();
   const isFirstRender = React.useRef(true);
   const nameRef = React.useRef();
   const ingredientRef = React.useRef();
   const descriptionRef = React.useRef();
 
-  let imageArr = [];
+  let imageArr = [
+    ImageOne.default,
+    ImageTwo.default,
+    ImageThree.default,
+    ImageFour.default,
+  ];
 
   const handleInput = (e) => {
     setRecipe({
@@ -25,10 +31,7 @@ const Home = () => {
     });
   };
 
-  useEffect(() => {
-   
-    console.log("saved images: ", ImageOne.default);
-  }, []);
+  useEffect(() => {}, []);
 
   // useEffect to trigger sendEntry when state (recipe) has been updated
   // isFirstRender tracks the initial render when the page loads - ugly but works
@@ -37,6 +40,13 @@ const Home = () => {
       isFirstRender.current = false;
       return;
     }
+
+    let random = Math.floor(Math.random() * 3);
+    console.log(random);
+    for (let i = 0; i < imageArr.length; i++) {
+      setNowImage(imageArr.length[random]);
+    }
+    console.log(nowImage);
 
     sendEntry();
   }, [recipe]);
@@ -65,10 +75,10 @@ const Home = () => {
       <div className="row">
         <div
           className="col-sm-12 home-header"
-          style={{ backgroundImage: `url(${ImageOne.default})` }}
+          style={{ backgroundImage: `url(${nowImage})` }}
         >
           <h2>This will be the homepage</h2>
-          <img src={imageArr.Image1} alt="test image" />
+          <img src={imageArr.length[0]} alt="test image" />
           <Modal open={isOpen}>
             <div className="mb-3">
               <label for="formGroupExampleInput" className="form-label">
