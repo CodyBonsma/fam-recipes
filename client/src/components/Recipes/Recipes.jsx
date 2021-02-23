@@ -53,23 +53,23 @@ const Recipes = () => {
   return (
     <>
       <div className="saved-recipes-container">
-        <h2>This will hold the saved recipes</h2>
+        <h2>Your saved recipes</h2>
         <ul>
           {savedRecipes ? (
             savedRecipes.map((recipe) => {
               return (
-                <div key={recipe._id}>
-                  <li>
-                    <b>{recipe.name}</b>
-                  </li>
-                  <label>Ingredients: </label>
-                  <li>{recipe.ingredients}</li>
-                  <p>{recipe.description}</p>
-                  <br />
-                  <button onClick={(e) => deleteRecipe(recipe._id)}>
-                    delete
-                  </button>
-                  <hr />
+                <div key={recipe._id} className="card recipe-card">
+                  <div className="card-body">
+                    <h5 className="card-title">{recipe.name}</h5>
+                    <hr />
+                    <p className="card-text">{recipe.description}</p>
+                    <a href="#" className="card-link">
+                      See More
+                    </a>
+                    <a href="#" className="card-link">
+                      Delete
+                    </a>
+                  </div>
                 </div>
               );
             })
