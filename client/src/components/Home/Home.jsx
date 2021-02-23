@@ -73,10 +73,9 @@ const Home = () => {
     <div className="container">
       <div className="row">
         <div
-          className="col-sm-12 home-header"
+          className="col-sm-12 home-header overlay"
           style={{ backgroundImage: `url(${nowImage})` }}
         >
-          <h2>This will be the homepage</h2>
           <Modal open={isOpen}>
             <div className="mb-3">
               <label for="formGroupExampleInput" className="form-label">
@@ -131,7 +130,16 @@ const Home = () => {
             <button onClick={() => setIsOpen(false)}>close</button>
             <button onClick={(e) => handleInput(e)}>save</button>
           </Modal>
-          <button onClick={() => setIsOpen(true)}>Add Recipe</button>
+          <div className="header-action">
+            <h2 id="header-title">Taste buds for life</h2>
+            <p id="header-text">
+              Browse hundreds of different recipes, create and save your own,
+              give your meals life
+            </p>
+            <button id="header-button" onClick={() => setIsOpen(true)}>
+              Add Recipe
+            </button>
+          </div>
         </div>
       </div>
     </div>

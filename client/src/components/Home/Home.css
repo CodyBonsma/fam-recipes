@@ -9,3 +9,32 @@
   border-bottom-left-radius: 20%;
   border-top-right-radius: 20%;
 }
+
+.header-action {
+  width: 40%;
+  height: auto;
+  text-align: left;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#header-button {
+  color: black;
+  background: blanchedalmond;
+  outline: none;
+  border: none;
+  margin-left: 7%;
+  margin-bottom: 5%;
+}
+
+#header-title {
+    margin-top: 5%;
+  color: white;
+  margin-left: 7%;
+}
+
+#header-text {
+  color: white;
+  margin-left: 7%;
+  margin-right: 5%;
+}
