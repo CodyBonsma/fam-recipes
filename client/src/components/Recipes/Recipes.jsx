@@ -21,8 +21,8 @@ const Recipes = () => {
       });
   }, []);
 
-  const deleteRecipe = (e) => {
-    console.log(JSON.stringify(e));
+  const deleteRecipe = ({e}) => {
+    // console.log(JSON.stringify(e));
     console.log("clicked to delete recipe", e);
     let ID = e;
     Data.deleteRecipe({ ID })
@@ -54,6 +54,7 @@ const Recipes = () => {
     <>
       <div className="saved-recipes-container">
         <h2>Your saved recipes</h2>
+
         <ul>
           {savedRecipes ? (
             savedRecipes.map((recipe) => {
@@ -66,7 +67,12 @@ const Recipes = () => {
                     <a href="#" className="card-link">
                       See More
                     </a>
-                    <a href="#" className="card-link">
+                    <a
+                      href="#"
+                      value={recipe._id}
+                      className="card-link"
+                      onClick={(e) => deleteRecipe(e.target.value)}
+                    >
                       Delete
                     </a>
                   </div>
