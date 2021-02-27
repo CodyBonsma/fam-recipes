@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import Modal from "../Modal/Modal";
 import Data from "../../utils/connect";
+import Search from "../Search/Search";
 import { ImageOne, ImageTwo, ImageThree, ImageFour } from "../../images/index";
-import TESTimage from "../../images/Image2.jpg";
 import "./Home.css";
 
 const Home = () => {
@@ -141,6 +141,7 @@ const Home = () => {
             </button>
           </div>
         </div>
+        <Search />
       </div>
     </div>
   );
