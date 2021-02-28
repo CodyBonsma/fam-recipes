@@ -7,8 +7,14 @@ const SEARCHURL = "https://api.edamam.com/search?q=";
 
 const Search = () => {
   const getRecipes = () => {
-    axios
-      .get(CORS + SEARCHURL + "chicken" + "&app_id=cb5d3f03" )
+    return axios
+      .get(
+        CORS +
+          SEARCHURL +
+          "chicken" +
+          "&app_id=cb5d3f03" +
+          "&app_key=f3fc16a2bf8ec34b785bef544190e060"
+      )
       .then((res) => {
         console.log(res);
       })
