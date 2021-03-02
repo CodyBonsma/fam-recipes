@@ -39,18 +39,18 @@ const Search = () => {
       {list ? (
         list.map((item) => {
           return (
-            <div className="card mb-3" style="max-width: 540px;">
+            <div key={item.recipe.calories} className="card mb-3 items-card">
               <div className="row g-0">
                 <div className="col-md-4">
-                  <img src="..." alt="..." />
+                  <img src={item.recipe.image} alt="recipe picture" />
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
-                    <h5 className="card-title">{item.recipe.ingredients.label}</h5>
+                    <h5 className="card-title">{item.recipe.label}</h5>
                     <p className="card-text">
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
+                     <ul>
+                         <li>{item.recipe.ingredientLines}</li>
+                     </ul>
                     </p>
                     <p className="card-text">
                       <small className="text-muted">

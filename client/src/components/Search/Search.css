@@ -1,3 +1,7 @@
 .edamam-section {
     margin: 5%;
 }
+
+.items-card {
+    max-width: auto;
+}
