@@ -10,12 +10,25 @@ const APP_KEY = "f3fc16a2bf8ec34b785bef544190e060";
 const Search = () => {
   const [list, setList] = useState("");
 
+  const mealArray = [
+    "chicken",
+    "shrimp",
+    "indian",
+    "thai",
+    "italian",
+    "soup",
+    "latin",
+    "german",
+    "chinese",
+  ];
+
   useEffect(() => {
+    let randomNumber = Math.floor(Math.random() * 9);
     return axios
       .get(
         CORS +
           SEARCHURL +
-          "chicken" +
+          mealArray[randomNumber] +
           "&app_id=" +
           APP_ID +
           "&app_key=" +
@@ -45,15 +58,9 @@ const Search = () => {
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
-                    <h5 className="card-title">{item.recipe.label}</h5>
-                    {item.recipe.ingredientLines.map((ingredients) => {
-                      return (
-                        <ul>
-                          <li>{ingredients}</li>
-                        </ul>
-                      );
-                    })}
-
+                    <h3 className="card-title">{item.recipe.label}</h3>
+                    <h6>{item.recipe.calories}</h6>
+                    <h6>{item.recipe.totalTime}</h6>
                     <p className="card-text">
                       <small className="text-muted">
                         Last updated 3 mins ago
