@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Search.css";
 
@@ -8,9 +8,9 @@ const APP_ID = "cb5d3f03";
 const APP_KEY = "f3fc16a2bf8ec34b785bef544190e060";
 
 const Search = () => {
-  const [list, setList] = useState('');
+  const [list, setList] = useState("");
 
-  const getRecipes = () => {
+  useEffect(() => {
     return axios
       .get(
         CORS +
@@ -25,17 +25,16 @@ const Search = () => {
       .then((res) => {
         console.log(res.data.hits);
         setList(res.data.hits);
-        console.log(list)
+        console.log(list);
       })
       .catch((err) => {
         if (err) throw err;
       });
-  };
+  }, []);
 
   return (
     <div className="edamam-section">
       <h3>This will hole the edamam API info</h3>
-      <button onClick={() => getRecipes()}>click to get recipes</button>
       {list ? (
         list.map((item) => {
           return (
@@ -47,11 +46,14 @@ const Search = () => {
                 <div className="col-md-8">
                   <div className="card-body">
                     <h5 className="card-title">{item.recipe.label}</h5>
-                    <p className="card-text">
-                     <ul>
-                         <li>{item.recipe.ingredientLines}</li>
-                     </ul>
-                    </p>
+                    {item.recipe.ingredientLines.map((ingredients) => {
+                      return (
+                        <ul>
+                          <li>{ingredients}</li>
+                        </ul>
+                      );
+                    })}
+
                     <p className="card-text">
                       <small className="text-muted">
                         Last updated 3 mins ago
