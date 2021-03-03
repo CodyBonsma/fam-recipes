@@ -59,8 +59,9 @@ const Search = () => {
                 <div className="col-md-8">
                   <div className="card-body">
                     <h3 className="card-title">{item.recipe.label}</h3>
-                    <h6>{item.recipe.calories}</h6>
-                    <h6>{item.recipe.totalTime}</h6>
+                    {/* // toFixed used to set decimal numbers */}
+                    <h6>calories: {item.recipe.calories.toFixed(2)}</h6>
+                    <h6>cook time: {item.recipe.totalTime}</h6>
                     <p className="card-text">
                       <small className="text-muted">
                         Last updated 3 mins ago
