@@ -21,10 +21,10 @@ const Recipes = () => {
       });
   }, []);
 
-  const deleteRecipe = ({e}) => {
+  const deleteRecipe = (e) => {
     // console.log(JSON.stringify(e));
     console.log("clicked to delete recipe", e);
-    let ID = e;
+    let ID = e.value;
     Data.deleteRecipe({ ID })
       .then((deletedRecipe) => {
         console.log("DELETED THIS", deletedRecipe);
@@ -71,7 +71,7 @@ const Recipes = () => {
                       href="#"
                       value={recipe._id}
                       className="card-link"
-                      onClick={(e) => deleteRecipe(e.target.value)}
+                      onClick={(e) => deleteRecipe(e.target.attributes.value)}
                     >
                       Delete
                     </a>

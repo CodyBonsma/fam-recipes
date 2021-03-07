@@ -54,7 +54,11 @@ const Search = () => {
             <div key={item.recipe.calories} className="card mb-3 items-card">
               <div className="row g-0">
                 <div className="col-md-4">
-                  <img src={item.recipe.image} alt="recipe picture" />
+                  <img
+                    id="search-picture"
+                    src={item.recipe.image}
+                    alt="recipe picture"
+                  />
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
@@ -62,11 +66,8 @@ const Search = () => {
                     {/* // toFixed used to set decimal numbers */}
                     <h6>calories: {item.recipe.calories.toFixed(2)}</h6>
                     <h6>cook time: {item.recipe.totalTime}</h6>
-                    <p className="card-text">
-                      <small className="text-muted">
-                        Last updated 3 mins ago
-                      </small>
-                    </p>
+                    <p className="card-text"></p>
+                    <button>see more</button>
                   </div>
                 </div>
               </div>
