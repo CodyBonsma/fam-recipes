@@ -1,7 +1,8 @@
-.container-main{
-    border-style: dotted;
-    margin-top: 200px;
-    width: 300px;
-    margin-left: 50%;
-    margin-right: 50%;
+.container-main {
+  border-style: dotted;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10rem;
+  text-align: center;
 }

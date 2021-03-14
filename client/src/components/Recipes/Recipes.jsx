@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Data from "../../utils/connect";
+import Expanded from "../Expanded/Expanded";
 import "./Recipes.css";
 
 const Recipes = () => {
@@ -64,9 +66,16 @@ const Recipes = () => {
                     <h5 className="card-title">{recipe.name}</h5>
                     <hr />
                     <p className="card-text">{recipe.description}</p>
-                    <a href="#" className="card-link">
+                    {/* <a href="/expandedrecipes" className="card-link">
                       See More
-                    </a>
+                    </a> */}
+                    <Link
+                      to="/expandedrecipes"
+                      value={recipe._id}
+                      className="card-link"
+                    >
+                      See More
+                    </Link>
                     <a
                       href="#"
                       value={recipe._id}
